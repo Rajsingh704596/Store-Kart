@@ -4,6 +4,7 @@ const Ratings = ({defaultRating = 1,isEditable, onRatingChange=()=>{}}) => {    
 
   const [selectRating, setSelectRating] = useState(defaultRating);
 
+  // Update selectRating when defaultRating changes
   useEffect(()=>{
     onRatingChange(selectRating);       // here Rating pass child to Parent    
   },[selectRating])
@@ -11,29 +12,19 @@ const Ratings = ({defaultRating = 1,isEditable, onRatingChange=()=>{}}) => {    
   return (
     // ratings
     <div className={`rating ${!isEditable && 'pointer-events-none'}`}>       {/* isEditable not get as prop so value false so it's true then pointer-event-none add in className so rating is only readOnly */}
-      {[1, 2, 3, 4, 5].map((value) => {
-        return (
-          <>
-            {value <= selectRating ? (
-              <input
-                type="radio"
-                onClick={() => setSelectRating(value)}
-                name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
-                aria-label="1 star"
-              />
-            ) : (
-              <input
-                type="radio"
-                onClick={() => setSelectRating(value)}
-                name="rating-2"
-                className="mask mask-star-2 bg-orange-400/40"
-                aria-label="1 star"
-              />
-            )}
-          </>
-        );
-      })}
+      {[1, 2, 3, 4, 5].map((value) => (      //here we wrap in parenthesis so no need to use return 
+        <input
+          key={value}
+          type="radio"
+          name="rating-2"
+          className={`mask mask-star-2 ${
+            value <= selectRating ? "bg-orange-400" : "bg-orange-400/20"
+          }`}
+          aria-label={`${value} star`}
+          checked={value === selectRating} // Set checked attribute
+          onChange={() => setSelectRating(value)} // Handle rating change
+        />
+      ))}
     </div>
   );
 };

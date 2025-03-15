@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Rating from '../ratings/Ratings';
+import Ratings from '../ratings/Ratings';
 
 const Filter = () => {
 
-  const[filter, setFilters]= useState({
+  const[filters, setFilters]= useState({
     price:5000,          //initial state 
-    ratings:5,
+    ratings:3,
   })
 
   // console.log(filter);
@@ -69,19 +69,23 @@ const Filter = () => {
       {/* Rating */}
       <div className='my-6'>
       {/* Rating component which is editable */}
-      <Rating defaultRating={filter?.ratings} isEditable={true} onRatingChange={(Rating)=>setFilters((prev)=>({...prev, ratings:Rating}))}/>
+      <Ratings defaultRating={filters?.ratings} isEditable={true} onRatingChange={(Rating)=>setFilters((prev)=>({...prev, ratings:Rating}))}/>
       {/* here Rating basically get from child component and with help of setFun rating update setFilters({...filter, ratings:Rating}) */}
       <br />
-      {/* <Rating/> */}   {/* this Rating component only for show (Read-Only) */}
+      {/* <Ratings/> */}   {/* this Rating component only for show (Read-Only) */}
       </div>
 
 
       {/* Price Range */}
       <div className='my-8'>
-      <p className='my-4'>Price: <strong>{filter?.price}</strong> Rs</p>
-      <input name="price" type="range" min={100} max={5000} value={filter?.price} onChange={handleInputChange} className="range range-info range-xs" />
+      <p className='my-4'>Price: <strong>{filters?.price}</strong> Rs</p>
+      <input name="price" type="range" min={100} max={5000} value={filters?.price} onChange={handleInputChange} className="range range-info range-xs" />
       </div>
 
+       {/* clear filter Button */}
+       <div className='mt-[50px]'>
+        <button className='btn btn-neutral w-full'>Clear Filters</button>
+       </div>
     </div>
   );
 };
