@@ -4,18 +4,27 @@ import Rating from '../ratings/Ratings';
 const Filter = () => {
 
   const[filter, setFilters]= useState({
-    price:'',
+    price:5000,          //initial state 
     ratings:5,
   })
 
-  console.log(filter);
+  // console.log(filter);
+
+  // fun that handle all input which is change
+  const handleInputChange=(e)=>{
+    const {name,value} =e.target
+    setFilters((prev)=>({...prev,[name]:value }))
+  }
+
+
   return (
     <div className="min-h-screen w-full max-w-[20rem] border-r border-r-white/10 p-6">
+
       {/* radio ascending or descending */}
       <div>
         <div className="form-control">
           <label className="label cursor-pointer gap-30">
-            <span className="label-text w-20">Ascending</span>
+            <span className="label-text w-30 my-2">Ascending</span>
             <input
               type="radio"
               name="radio-1"
@@ -27,7 +36,7 @@ const Filter = () => {
 
         <div className="form-control">
           <label className="label cursor-pointer gap-30">
-            <span className="label-text w-20">Descending</span>
+            <span className="label-text w-30">Descending</span>
             <input
               type="radio"
               name="radio-1"
@@ -44,14 +53,14 @@ const Filter = () => {
       <div>
       <div className="form-control">
           <label className="label cursor-pointer gap-30">
-            <span className="label-text w-20">Include Out of Stock</span>
+            <span className="label-text w-30 my-2">Include Out of Stock</span>
             <input type="checkbox" defaultChecked className="checkbox checkbox-primary checkbox-sm" />
           </label>
         </div>
 
       <div className="form-control">
           <label className="label cursor-pointer gap-30">
-            <span className="label-text w-20">Fast Delivery Only</span>
+            <span className="label-text w-30">Fast Delivery Only</span>
             <input type="checkbox" defaultChecked className="checkbox checkbox-primary checkbox-sm" />
           </label>
         </div>
@@ -59,14 +68,23 @@ const Filter = () => {
 
       {/* Rating */}
       <div className='my-6'>
+      {/* Rating component which is editable */}
       <Rating defaultRating={filter?.ratings} isEditable={true} onRatingChange={(Rating)=>setFilters((prev)=>({...prev, ratings:Rating}))}/>
       {/* here Rating basically get from child component and with help of setFun rating update setFilters({...filter, ratings:Rating}) */}
       <br />
-      {/* <Rating/> */}   {/* this Rating only for show (Read-Only) */}
+      {/* <Rating/> */}   {/* this Rating component only for show (Read-Only) */}
+      </div>
+
+
+      {/* Price Range */}
+      <div className='my-8'>
+      <p className='my-4'>Price: <strong>{filter?.price}</strong> Rs</p>
+      <input name="price" type="range" min={100} max={5000} value={filter?.price} onChange={handleInputChange} className="range range-info range-xs" />
       </div>
 
     </div>
   );
 };
+
 
 export default Filter;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Ratings = ({defaultRating = 1,isEditable, onRatingChange=()=>{}}) => {       //here default Rating value or fun pass if not give
+const Ratings = ({defaultRating = 1,isEditable, onRatingChange=()=>{}}) => {     //here default Rating value or fun pass if not give in prop by parent component then execute 
 
   const [selectRating, setSelectRating] = useState(defaultRating);
 
@@ -10,7 +10,7 @@ const Ratings = ({defaultRating = 1,isEditable, onRatingChange=()=>{}}) => {    
 
   return (
     // ratings
-    <div className={`rating ${!isEditable && 'pointer-events-none'}`}>
+    <div className={`rating ${!isEditable && 'pointer-events-none'}`}>       {/* isEditable not get as prop so value false so it's true then pointer-event-none add in className so rating is only readOnly */}
       {[1, 2, 3, 4, 5].map((value) => {
         return (
           <>
