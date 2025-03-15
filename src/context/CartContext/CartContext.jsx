@@ -13,27 +13,30 @@ const products = [...Array(20)].map((_)=>{
     return{              
        id:faker.string.uuid(),        // Generate a random product name
        productName: faker.commerce.productName(),
-        productDescription: faker.commerce.productDescription(),
+       productDescription: faker.commerce.productDescription(),
        price:faker.commerce.price({min:100, max:5000}),
        image:faker.image.urlPicsumPhotos({width:300, height:300}),
        inStock:faker.helpers.arrayElement([0,5,10,15,20]),
-       faseDeliver:faker.datatype.boolean(),
+       fastDeliver:faker.datatype.boolean(),
+       isNew:faker.datatype.boolean(),
        ratings:faker.helpers.arrayElement([1,2,3,4,5])
        
 }});  
     
-const initialState = {products};
+// console.log(products);
+const initialState = products;
 
-const[state, dispatch]=useReducer( cartReducer, initialState);
+const[productState, dispatch]=useReducer( cartReducer, initialState);
+// console.log(productState);
  
 return(
-    <CartContext.Provider value={state}>
+    <CartContext.Provider value={productState}>
         {children}
     </CartContext.Provider>
 )
-
 }
 
+//custom hook for useContext hook
 const useCustomContext=()=>{
     return (
         useContext(CartContext)

@@ -18,7 +18,7 @@ const Filter = () => {
 
 
   return (
-    <div className="min-h-screen w-full max-w-[20rem] border-r border-r-white/10 p-6">
+    <div className="min-w-[15rem] border-r border-r-white/10 p-6 sticky top-[4rem]">
 
       {/* radio ascending or descending */}
       <div>
