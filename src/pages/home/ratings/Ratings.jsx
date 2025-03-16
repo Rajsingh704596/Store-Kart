@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Ratings = ({ defaultRating = 1, isEditable, onRatingChange = () => {}, className }) => {
+const Ratings = ({ defaultRating = 1, isEditable, onRatingChange = () => {}, className="" }) => {
   const [selectRating, setSelectRating] = useState(defaultRating);
 
   // Update selectRating when defaultRating changes

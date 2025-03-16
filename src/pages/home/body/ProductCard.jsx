@@ -1,4 +1,5 @@
 import Rating from '../ratings/Ratings';
+import { LiaShippingFastSolid } from "react-icons/lia";
 
 
 const ProductCard = ({productDetails}) => {
@@ -31,7 +32,7 @@ const ProductCard = ({productDetails}) => {
 
     {inStock?(<p className="text-green-500">{inStock} items left...!!</p>):(<p className="text-red-500">Out of Stock...!!</p>)}
 
-    {fastDeliver?(<p className="text-blue-400">Fast Delivery</p>):(<p className="text-blue-400">5 Days Delivery</p>)}
+    {fastDeliver?(<p className="text-blue-400 flex items-center gap-2">Fast Delivery <span className='mt-1'><LiaShippingFastSolid /></span></p>):(<p className="text-blue-400">5 Days Delivery</p>)}
 
     <Rating defaultRating={ratings} isEditable={false} className={"w-20"}/>     {/*class pass as a props */}
 

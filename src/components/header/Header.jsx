@@ -1,10 +1,26 @@
-
+import { GiHamburgerMenu } from "react-icons/gi";
+import Filter from "../../pages/home/filter/Filter";
 
 const Header = () => {
   return (
     <div className="navbar bg-base-100 shadow-lg sticky top-0 z-10">
 
-    <div className="flex-1">
+    <div className="drawer min-[570px]:hidden w-12">
+   <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+   <div className="drawer-content">
+    {/* Page content here */}
+    <label htmlFor="my-drawer" className="btn btn-soft text-xl drawer-button"><GiHamburgerMenu /></label>
+   </div>
+   <div className="drawer-side">
+    <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+    <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+      {/* Sidebar content here */}
+        <Filter/>
+    </ul>
+   </div>
+   </div>
+
+    <div className="flex flex-1">
       <a className="btn btn-ghost text-xl">Store-Kart</a>
     </div>
 

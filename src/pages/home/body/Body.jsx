@@ -11,9 +11,7 @@ const Body = () => {
     <div className="grid grid-cols-3 gap-[1rem] p-3 max-[1150px]:grid-cols-2 max-[850px]:grid-cols-1">
       {productState?.map((curElem)=>{
         return (
-        <div key={curElem.id}>
-        <ProductCard productDetails={curElem}/>
-        </div>
+                <ProductCard productDetails={curElem} key={curElem.id}/>  
       )
       })}
  
