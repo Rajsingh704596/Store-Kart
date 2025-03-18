@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-const Ratings = ({ defaultRating = 1, isEditable, onRatingChange = () => {}, className="" }) => {
+const Ratings = ({
+  defaultRating = 1,
+  isEditable,
+  onRatingChange = () => {},
+  className = "",
+}) => {
   const [selectRating, setSelectRating] = useState(defaultRating);
 
   // Update selectRating when defaultRating changes
@@ -14,7 +19,9 @@ const Ratings = ({ defaultRating = 1, isEditable, onRatingChange = () => {}, cla
   }, [selectRating]);
 
   return (
-    <div className={`rating ${!isEditable && 'pointer-events-none'} ${className}`}>
+    <div
+      className={`rating ${!isEditable && "pointer-events-none"} ${className}`}
+    >
       {[1, 2, 3, 4, 5].map((value) => (
         <input
           key={value}

@@ -1,12 +1,16 @@
-import React from 'react'
+import CartBody from "./CartBody";
+import SubTotalSideBar from "./SubTotalSideBar";
 
 function Cart() {
   return (
-    <div>
-        cart
-      
+    <div className="flex gap-2">
+      <CartBody />
+
+      <div>
+        <SubTotalSideBar />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

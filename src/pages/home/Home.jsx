@@ -1,17 +1,15 @@
-import Body from './body/Body'
-import Filter from './filter/Filter'
-import React from 'react'
+import Filter from "./filter/Filter";
+import Body from "./body/body";
 
 function Home() {
   return (
-    <div className='flex gap-2' >
-      <div className='max-[570px]:hidden'>
-      <Filter/>
+    <div className="flex gap-2">
+      <div className="max-[570px]:hidden">
+        <Filter />
       </div>
-      <Body/>
-      
+      <Body />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
